@@ -1,19 +1,12 @@
+import React from "react";
 import "./App.css";
-import AppComp from "./exchange_comps/appComp";
-// import Input from "./comps/input";
-// import AppColors from "./comps/appColors";
-// import AppVod from "./vodComps/appVod";
+import Exchange from "./exchange_comps/exchange";
 
 function App() {
   return (
-    <div className="container text-center">
-      <img src="/logo192.png" alt="image" />
-      <h1 className="text-info">Hello From React </h1>
-      {/* <Input /> */}
-      {/* <AppColors /> */}
-      {/* <AppVod /> */}
-      <AppComp />
-    </div>
+    <React.Fragment>
+      <Exchange />
+    </React.Fragment>
   );
 }
 
