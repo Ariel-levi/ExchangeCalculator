@@ -3,20 +3,24 @@ import { ExchangeContext } from "../context/exchangeContext";
 
 function Input(props) {
   let numRef = useRef();
-  // let exchangeFromRef = useRef();
+  let exchangeFromRef = useRef();
   let exchangeToRef = useRef();
 
-  let { ar, exchangeCoins, nameAr } = useContext(ExchangeContext);
+  let { ar, setfinalVal, setFromCurrency } = useContext(ExchangeContext);
+  let coins_ar = ["USD","ILS","EUR","BTC","THB"];
 
   const onClickBtn = () => {
     let num = numRef.current.value;
-    let from = exchangeFromRef.current.value;
     let to = exchangeToRef.current.value;
-    exchangeCoins(num, from, to);
+    let toNum = ar[to];
+    // console.log("Score :: "+num*toNum);
+    setfinalVal((num*toNum).toFixed(4))
   };
-
+  
   const onChange = () => {
-    setFromCurrency()
+    let from = exchangeFromRef.current.value;
+    console.log(from)
+    setFromCurrency(from)
   }
 
   return (
@@ -31,24 +35,24 @@ function Input(props) {
       <br />
       <h2>Exchange From</h2>
       <select onChange={onChange} ref={exchangeFromRef} className="my-3 form-control">
-        {ar.map((item, i) => {
+          {coins_ar.map((item, i) => {
           return (
-            <option key={i} value={item}>
-              {nameAr[i]}
-            </option>
+              <option key={i} value={item}>
+                  {item}
+              </option>
           );
-        })}
+          })}
       </select>
 
       <h2>Exchange To</h2>
       <select ref={exchangeToRef} className="my-3 form-control">
-        {ar.map((item, i) => {
+          {coins_ar.map((item, i) => {
           return (
-            <option key={i} value={item}>
-              {nameAr[i]}
-            </option>
+              <option key={i} value={item}>
+                  {item}
+              </option>
           );
-        })}
+          })}
       </select>
       <br />
       <button onClick={onClickBtn}>Exchange</button>
