@@ -6,15 +6,13 @@ function Input(props) {
   let exchangeFromRef = useRef();
   let exchangeToRef = useRef();
 
-  let { ar, setfinalVal, setFromCurrency, fromCurrency, setToCurrency, toCurrency} = useContext(ExchangeContext);
-  let coins_ar = ["USD","ILS","EUR","BTC","THB"];
+  let { ar, setfinalVal, setFromCurrency, fromCurrency, setToCurrency, toCurrency, coins_ar} = useContext(ExchangeContext);
 
   const onClickBtn = () => {
     let num = numRef.current.value;
     let from = exchangeFromRef.current.value;
     let to = exchangeToRef.current.value;
     let toNum = ar[to];
-    // console.log("Score :: "+num*toNum);
     if (to == "USD" && from == "USD") {
       setfinalVal(num);
     } else {
