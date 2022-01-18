@@ -7,8 +7,9 @@ import { ExchangeContext } from "../context/exchangeContext";
 function Exchange(props) {
   const [ar, setAr] = useState([]);
   const [finalVal, setfinalVal] = useState(0);
-  const [fromCurrency, setFromCurrency] = useState("USD");
-  const [toCurrency, setToCurrency] = useState("USD");
+  const [coins_ar, setCoins_ar] = useState(["USD","ILS","EUR","BTC","THB"]);
+  const [fromCurrency, setFromCurrency] = useState(coins_ar[0]);
+  const [toCurrency, setToCurrency] = useState(coins_ar[1]);
 
   useEffect(() => {
     doApi(fromCurrency);
@@ -18,7 +19,8 @@ function Exchange(props) {
     let url = `https://freecurrencyapi.net/api/v2/latest?apikey=f2dce500-45f0-11ec-9860-7954a32a920b&base_currency=${_Currency}`;
     let resp = await axios.get(url);
     setAr(resp.data.data);
-    // console.log(resp.data.data)
+    console.log(resp.data.query.base_currency)
+    console.log(resp.data.data)
   };
 
   return (
@@ -31,7 +33,8 @@ function Exchange(props) {
         fromCurrency:fromCurrency,
         setFromCurrency:setFromCurrency,
         toCurrency:toCurrency,
-        setToCurrency:setToCurrency
+        setToCurrency:setToCurrency,
+        coins_ar:coins_ar
       }}
     >
       <div className="container">
