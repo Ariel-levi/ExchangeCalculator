@@ -6,30 +6,62 @@ function Input(props) {
   let exchangeFromRef = useRef();
   let exchangeToRef = useRef();
 
-  let { ar, setfinalVal, setFromCurrency } = useContext(ExchangeContext);
+  let { ar, setfinalVal, setFromCurrency, fromCurrency, setToCurrency, toCurrency} = useContext(ExchangeContext);
   let coins_ar = ["USD","ILS","EUR","BTC","THB"];
 
   const onClickBtn = () => {
     let num = numRef.current.value;
+    let from = exchangeFromRef.current.value;
     let to = exchangeToRef.current.value;
     let toNum = ar[to];
     // console.log("Score :: "+num*toNum);
-    setfinalVal((num*toNum).toFixed(4))
+    if (to == "USD" && from == "USD") {
+      setfinalVal(num);
+    } else {
+      setfinalVal((num*toNum).toFixed(4));
+    }
   };
+
+  const checkPrint = (_titel, _from, _to) => {
+    console.log("==================== " + _titel)
+    console.log("from : " + coins_ar.indexOf(_from) + " , setFrom => " + fromCurrency)
+    console.log("to : " + coins_ar.indexOf(_to) + " , setTo => " + toCurrency)
+  }
   
   const onChange = () => {
     let from = exchangeFromRef.current.value;
-    console.log(from)
+    let to = exchangeToRef.current.value;
     setFromCurrency(from)
+    setToCurrency(to);
+    checkPrint("onChange", from, to);
   }
 
+  // need to fix
+  const onClickSwitch = () => {
+    let from = exchangeFromRef.current.value;
+    let to = exchangeToRef.current.value;
+    let temp = from;
+    from = to;
+    to = temp;
+    setFromCurrency(from)
+    setToCurrency(to);
+    checkPrint("switch", from, to);
+  }
+  
+  const check = () => {
+    let from = exchangeFromRef.current.value;
+    let to = exchangeToRef.current.value;
+    checkPrint("check", from, to);
+  }
+  
   return (
     <div className="col-md-6 my-3 d-block">
       <h3>Enter Number:</h3>
       <input
         ref={numRef}
         className="form-control"
-        type="text"
+        defaultValue={1}
+        type="number"
         placeholder="Enter Number..."
       />
       <br />
@@ -56,6 +88,8 @@ function Input(props) {
       </select>
       <br />
       <button onClick={onClickBtn}>Exchange</button>
+      <button onClick={onClickSwitch}>Switch</button>
+      <button onClick={check}>check</button>
     </div>
   );
 }
