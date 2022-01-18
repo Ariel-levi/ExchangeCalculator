@@ -1,14 +1,11 @@
-import React from "react";
-import "./App.css";
-import Convertor from "./convertor";
-import Exchange from "./exchange_comps/exchange";
+import AppExchange from './comps/appExchange';
+import './App.css';
 
 function App() {
   return (
-    <React.Fragment>
-      <Exchange />
-      {/* <Convertor /> */}
-    </React.Fragment>
+    <div className="container">
+      <AppExchange/>
+    </div>
   );
 }
 
