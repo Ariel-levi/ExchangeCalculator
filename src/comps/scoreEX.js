@@ -9,14 +9,12 @@ function ScoreEX(props) {
   let total = ar[0].total.toFixed(3);
 
   return (
-    <div className="col-md-6 mx-auto shadow text-center score ">
-      <h2>
-        {amount} {first} = {total} {end}
-      </h2>
+    <div className="mt-5">
+      <h2 className="text-center">{amount} <span className="text-success">{first}</span> = {total} <span className="text-success">{end}</span></h2>
       <br />
       <h3>
         Date: <br />
-        <span className="text-info">{new Date().toLocaleString()}</span>
+        <span>{new Date().toLocaleString()}</span>
       </h3>
     </div>
   );

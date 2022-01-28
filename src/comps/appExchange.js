@@ -10,10 +10,13 @@ function AppExchange(props) {
 
   return (
     <arcontext.Provider value={{ ar: ar, setAr: setAr }}>
-      <React.Fragment>
-        <InputEX />
-        <ScoreEX />
-      </React.Fragment>
+      <div className="container">
+        <h1 className="text-center mt-5 titel"> Exchange Calculator</h1>
+        <div className="blurbg">
+          <InputEX />
+          <ScoreEX />
+        </div>
+      </div>
     </arcontext.Provider>
   );
 }
