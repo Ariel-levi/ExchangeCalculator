@@ -1,10 +1,10 @@
-import AppExchange from './comps/appExchange';
-import './App.css';
+import "./App.css";
+import AppExchange from "./comps/appExchange";
 
 function App() {
   return (
     <div className="container">
-      <AppExchange/>
+      <AppExchange />
     </div>
   );
 }

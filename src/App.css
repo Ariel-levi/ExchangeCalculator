@@ -1,49 +1,40 @@
-body{
-  /* background-image: url(../public/background.jpg);
-  background-size: cover;
-  background-position:center; */
-  background: linear-gradient(#00115d, #AEC4E9, #9AA56F);
+body {
+  background: silver;
   font-family: sans-serif;
 }
-.input{
+.input {
   background: rgba(255, 255, 255, 0.87);
- border-radius: 50px;
- padding: 50px;
- margin: 20px;
+  border-radius: 50px;
+  padding: 50px;
+  margin: 20px;
 }
-/* h1{
-  color: rgb(161, 133, 125);
-} */
-.select1{
+.select1 {
   margin-bottom: -10px;
 }
-button{
-  background-image: url(../public/exchange.png);
+button {
+  background-image: url(../public/images/exchange.png);
   background-size: cover;
-  background-position:center;
+  background-position: center;
   border-radius: 100%;
-   width: 50px;
-   height: 50px;
-   margin: 0px 42%;
+  width: 50px;
+  height: 50px;
+  margin: 0px 42%;
 }
-.select2{
+.select2 {
   margin-top: -10px;
 }
-.score{
+.score {
   background: rgba(255, 255, 255, 0.87);
   border-radius: 50px;
   padding: 40px;
   margin-top: 10px;
   margin-bottom: 75px;
 }
-/* h3{
-  color: red;
-} */
-@media (max-width:768px){
-  h1{
-font-size: 25px;
-} 
-h3{
-  font-size: 20px;
-}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 20px;
+  }
 }
