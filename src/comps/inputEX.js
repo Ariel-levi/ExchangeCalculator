@@ -5,14 +5,14 @@ import axios from "axios";
 function InputEX(props) {
   let { setAr } = useContext(arcontext);
 
-  let firstValueRef = useRef();
-  let endlValueRef = useRef();
+  let fromRef = useRef();
+  let toRef = useRef();
   let amountRef = useRef();
 
-  const switchClick = () => {
-    let temp = firstValueRef.current.value;
-    firstValueRef.current.value = endlValueRef.current.value;
-    endlValueRef.current.value = temp;
+  const onClickSwitch = () => {
+    let temp = fromRef.current.value;
+    fromRef.current.value = toRef.current.value;
+    toRef.current.value = temp;
     doApi();
   };
 
@@ -21,28 +21,28 @@ function InputEX(props) {
   };
 
   const doApi = async () => {
-    let first_val = firstValueRef.current.value;
-    let end_val = endlValueRef.current.value;
+    let fromVal = fromRef.current.value;
+    let toVal = toRef.current.value;
     let url = `https://freecurrencyapi.net/api/v2/latest?apikey=f2dce500-45f0-11ec-9860-7954a32a920b`;
     let resp = await axios.get(url);
     // console.log(resp.data.data);
-    let amount_val = amountRef.current.value;
-    let first = 1;
-    if (first_val != "USD") {
-      first = resp.data.data[first_val];
+    let amountVal = amountRef.current.value;
+    let from = 1;
+    if (fromVal != "USD") {
+      from = resp.data.data[fromVal];
     }
-    let end = 1;
-    if (end_val != "USD") {
-      end = resp.data.data[end_val];
+    let to = 1;
+    if (toVal != "USD") {
+      to = resp.data.data[toVal];
     }
 
-    let TotalVal = (1 / first) * end * amount_val;
+    let TotalVal = (1 / from) * to * amountVal;
 
     let changeObj = {
       total: TotalVal,
-      amount: amount_val,
-      first: first_val,
-      end: end_val,
+      amount: amountVal,
+      from: fromVal,
+      to: toVal,
     };
     setAr([changeObj]);
   };
@@ -61,32 +61,34 @@ function InputEX(props) {
       <h4>From:</h4>
       <select
         onChange={calcTotal}
-        ref={firstValueRef}
+        ref={fromRef}
         className="form-control mb-3"
         >
-        <option value="USD"> USD U.S. Dollar</option>
-        <option value="ILS">ILS New Shekel</option>
-        <option value="EUR">EURO</option>
-        <option value="BTC">BTC Bitcoin</option>
-        <option value="CAD">CAD Canadian Dollar</option>
-        <option value="GBP">GBP Pound</option>
-        <option value="THB">THB Thai Butt</option>
+        <option value="USD">🪙 USD U.S. Dollar</option>
+        <option value="ILS">🪙 ILS New Shekel</option>
+        <option value="EUR">🪙 EURO</option>
+        <option value="BTC">🪙 BTC Bitcoin</option>
+        <option value="CAD">🪙 CAD Canadian Dollar</option>
+        <option value="GBP">🪙 GBP Pound</option>
+        <option value="THB">🪙 THB Thai Butt</option>
       </select>
       <h4>To:</h4>
       <select
         onChange={calcTotal}
-        ref={endlValueRef}
+        ref={toRef}
         className="form-control"
       >
-        <option value="USD">USD U.S. Dollar</option>
-        <option value="ILS">ILS New Shekel</option>
-        <option value="EUR">EURO</option>
-        <option value="BTC">BTC Bitcoin</option>
-        <option value="CAD">CAD Canadian Dollar</option>
-        <option value="GBP">GBP Pound</option>
-        <option value="THB">THB Thai Butt</option>
+        <option value="USD">🪙 USD U.S. Dollar</option>
+        <option value="ILS">🪙 ILS New Shekel</option>
+        <option value="EUR">🪙 EURO</option>
+        <option value="BTC">🪙 BTC Bitcoin</option>
+        <option value="CAD">🪙 CAD Canadian Dollar</option>
+        <option value="GBP">🪙 GBP Pound</option>
+        <option value="THB">🪙 THB Thai Butt</option>
       </select>
-      <button className="btn btn-info mt-3" onClick={switchClick}>Switch</button>
+      <div className="d-flex justify-content-center">
+        <div className="img_switch mt-3 " onClick={onClickSwitch}></div>
+      </div>
     </div>
   );
 }

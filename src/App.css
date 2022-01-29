@@ -22,6 +22,19 @@ body {
   box-shadow: none;
 }
 
-.btn:focus {
-  outline: none !important;
+.img_switch {
+  background-image: url(/public/exchange.png);
+  background-size: cover;
+  height: 100px;
+  width: 95px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px #000);
+}
+
+.img_switch:hover {
+  filter: drop-shadow(0 0 10px rgb(255, 255, 255));
+}
+
+.img_switch:active {
+  filter: drop-shadow(0 0 10px rgb(0, 153, 241));
 }

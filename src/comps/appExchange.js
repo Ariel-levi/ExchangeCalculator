@@ -5,7 +5,7 @@ import { arcontext } from "../context/arcontext";
 
 function AppExchange(props) {
   let [ar, setAr] = useState([
-    { total: 100, amount: 100, first: "USD", end: "USD" },
+    { total: 100, amount: 100, from: "USD", to: "USD" },
   ]);
 
   return (
