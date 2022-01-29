@@ -11,8 +11,11 @@ function AppExchange(props) {
   return (
     <arcontext.Provider value={{ ar: ar, setAr: setAr }}>
       <div className="container">
+        <div className="d-flex justify-content-center mt-5">
+          <img src="/images/caculation.png" width="200"  />
+        </div>
         <h1 className="text-center mt-5 titel"> Exchange Calculator</h1>
-        <div className="blurbg">
+        <div className="blurbg my-5">
           <InputEX />
           <ScoreEX />
         </div>
