@@ -3,9 +3,9 @@ import InputEX from "./inputEX";
 import ScoreEX from "./scoreEX";
 import { arcontext } from "../context/arcontext";
 
-function AppExchange(props) {
+function AppExchange(props) {  
   let [ar, setAr] = useState([
-    { total: 100, amount: 100, from: "USD", to: "USD" },
+    { total: 0, amount: 0, from: "", to: "" },
   ]);
 
   return (

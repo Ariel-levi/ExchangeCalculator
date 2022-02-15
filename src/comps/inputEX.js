@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { arcontext } from "../context/arcontext";
 import axios from "axios";
 
@@ -8,6 +8,10 @@ function InputEX(props) {
   let fromRef = useRef();
   let toRef = useRef();
   let amountRef = useRef();
+
+  useEffect(() => {
+    doApi();
+  },[])
 
   const onClickSwitch = () => {
     let temp = fromRef.current.value;
@@ -64,13 +68,13 @@ function InputEX(props) {
         ref={fromRef}
         className="form-control mb-3"
         >
-        <option value="USD">🪙 USD U.S. Dollar</option>
-        <option value="ILS">🪙 ILS New Shekel</option>
-        <option value="EUR">🪙 EURO</option>
-        <option value="BTC">🪙 BTC Bitcoin</option>
-        <option value="CAD">🪙 CAD Canadian Dollar</option>
-        <option value="GBP">🪙 GBP Pound</option>
-        <option value="THB">🪙 THB Thai Butt</option>
+        <option value="USD">USD U.S. Dollar</option>
+        <option value="ILS">ILS New Shekel</option>
+        <option value="EUR">EURO</option>
+        <option value="BTC">BTC Bitcoin</option>
+        <option value="CAD">CAD Canadian Dollar</option>
+        <option value="GBP">GBP Pound</option>
+        <option value="THB">THB Thai Butt</option>
       </select>
       <h4>To:</h4>
       <select
@@ -78,13 +82,13 @@ function InputEX(props) {
         ref={toRef}
         className="form-control"
       >
-        <option value="USD">🪙 USD U.S. Dollar</option>
-        <option value="ILS">🪙 ILS New Shekel</option>
-        <option value="EUR">🪙 EURO</option>
-        <option value="BTC">🪙 BTC Bitcoin</option>
-        <option value="CAD">🪙 CAD Canadian Dollar</option>
-        <option value="GBP">🪙 GBP Pound</option>
-        <option value="THB">🪙 THB Thai Butt</option>
+        <option value="ILS">ILS New Shekel</option>
+        <option value="USD">USD U.S. Dollar</option>
+        <option value="EUR">EURO</option>
+        <option value="BTC">BTC Bitcoin</option>
+        <option value="CAD">CAD Canadian Dollar</option>
+        <option value="GBP">GBP Pound</option>
+        <option value="THB">THB Thai Butt</option>
       </select>
       <div className="d-flex justify-content-center">
         <div className="img_switch mt-3 " onClick={onClickSwitch}></div>
